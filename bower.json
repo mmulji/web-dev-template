@@ -1,0 +1,22 @@
+{
+  "name": "web-dev-template",
+  "version": "0.0.1",
+  "authors": [
+    "Milan Mulji <milan.mulji@mmedia-cs.com>"
+  ],
+  "description": "Website template",
+  "main": "index.html",
+  "keywords": [],
+  "license": "NA",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "fontawesome#~4.4.0"
+  }
+}
