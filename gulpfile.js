@@ -6,14 +6,15 @@ var less = require('gulp-less');
 var minifyCSS = require('gulp-minify-css');
 var csslint = require('gulp-csslint');
 var uglify = require('gulp-uglify');
+var del = require('del');
 
 // Source files
 var lessFiles = './source/**/*.less';
 var jsFiles = './source/**/*.js';
 
 // Target directories
-var cssDir = './site/css';
-var jsDir = '.site/js';
+var cssDir = './target';
+var jsDir = './target/js';
 
 
 /* -- CSS related -- */
@@ -25,7 +26,7 @@ gulp.task('less', function() {
 });
 
 
-gulp.task('csslint', function() {
+gulp.task('csslint', ['clean'], function() {
   gulp.files(cssDir)
     .pipe(csslint())
     .pipe(csslint.reporter()) // Display errors
@@ -33,7 +34,7 @@ gulp.task('csslint', function() {
 });
 
 
-gulp.task('cssminify', function() {
+gulp.task('cssminify', ['clean'], function() {
   return gulp.src(lessFiles)
     .pipe(less())
     .pipe(minifyCSS())
@@ -43,7 +44,7 @@ gulp.task('cssminify', function() {
 
 /* -- JS related -- */
 
-gulp.task('jsuglify', function() {
+gulp.task('jsuglify', ['clean'], function() {
   return gulp.src(jsFiles)
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
@@ -52,7 +53,7 @@ gulp.task('jsuglify', function() {
 
 /* -- Utility Tasks -- */
 gulp.task('clean', [''], function() {
-  // todo ...
+  del(['target/css', 'target/js', 'target/img'])
 });
 
 
